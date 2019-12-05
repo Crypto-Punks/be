@@ -1,0 +1,7 @@
+language: node_js
+services:
+  - mongodb
+env: MONGODB_URI=mongodb://localhost:27017/urlshortener APP_SECRET=OWo_1;X#cs(G3>xM6?rSLZ-C9"_obA#axOv'.5Y*)naQqB"mC(d]L{0h&/pL3G
+node_js:
+  - "stable"
+
