@@ -5,7 +5,7 @@ const app = require('../lib/app');
 const connect = require('../lib/utils/connect');
 const mongoose = require('mongoose');
 
-describe('portfolio routes', () => {
+describe('trade routes', () => {
   beforeAll(() => {
     connect();
   });
@@ -18,48 +18,61 @@ describe('portfolio routes', () => {
     return mongoose.connection.close();
   });
 
-  it('can post a portfolio', () => {
+  it('can post a trade', () => {
     const agent = request.agent(app);
     return agent
       .post('/api/v1/auth/signup')
       .send({ username: 'test1', password: 'abc1' })
       .then(user => {
         return agent
-          .post('/api/v1/portfolio')
-          .send({ user })
+          .post('/api/v1/trade')
+          .send({
+            user: user._id,
+            exchange_rate: 1000,
+            from_currency: 'USD',
+            to_currency: 'bitcoin'
+          })
           .then(res => {
             expect(res.body).toEqual({
               __v: 0,
               _id: expect.any(String),
               user: expect.any(String),
-              watchList: [],
-              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 10000 }]
+              timestamp: expect.any(String),
+              exchange_rate: 1000,
+              from_currency: 'USD',
+              to_currency: 'bitcoin'
             });
           });
       });
   });
 
-  it('can get a portfolio', () => {
+  it('can get all trades for a user', () => {
     const agent = request.agent(app);
     return agent
       .post('/api/v1/auth/signup')
       .send({ username: 'test1', password: 'abc1' })
       .then(user => {
         return agent
-          .post('/api/v1/portfolio')
-          .send({ user })
+          .post('/api/v1/trade')
+          .send({
+            user: user._id,
+            exchange_rate: 1000,
+            from_currency: 'USD',
+            to_currency: 'bitcoin'
+          })
           .then(() => {
             return agent
-              .get('/api/v1/portfolio/')
-              .expect(200)
-              .then(result => {
-                expect(result.body).toEqual({
+              .get('/api/v1/trade')
+              .then(res => {
+                expect(res.body).toEqual([{
                   __v: 0,
                   _id: expect.any(String),
                   user: expect.any(String),
-                  watchList: [],
-                  investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 10000 }]
-                });
+                  timestamp: expect.any(String),
+                  exchange_rate: 1000,
+                  from_currency: 'USD',
+                  to_currency: 'bitcoin'
+                }]);
               });
           });
       });
