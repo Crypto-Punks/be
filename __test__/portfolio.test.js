@@ -48,13 +48,11 @@ describe('portfolio routes', () => {
         return agent
           .post('/api/v1/portfolio')
           .send({ user })
-          .then(res => {
-            console.log(res.body._id);
+          .then(() => {
             return agent
               .get('/api/v1/portfolio/')
               .expect(200)
               .then(result => {
-                console.log(result.body);
                 expect(result.body).toEqual({
                   __v: 0,
                   _id: expect.any(String),
