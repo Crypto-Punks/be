@@ -32,7 +32,7 @@ describe('portfolio routes', () => {
               _id: expect.any(String),
               user: expect.any(String),
               watchList: [],
-              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 10000 }]
+              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 100000 }]
             });
           });
       });
@@ -53,11 +53,8 @@ describe('portfolio routes', () => {
               .expect(200)
               .then(result => {
                 expect(result.body).toEqual({
-                  __v: 0,
-                  _id: expect.any(String),
-                  user: expect.any(String),
                   watchList: [],
-                  investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 10000 }]
+                  investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 100000 }]
                 });
               });
           });
@@ -76,14 +73,14 @@ describe('portfolio routes', () => {
       .then(() => {
         return agent
           .put('/api/v1/portfolio')
-          .send({ investedCoins: [{ name: 'USD', amount: 10000 }, { name: 'Bitcoin', amount: 1 }] })
+          .send({ investedCoins: [{ name: 'USD', amount: 100000 }, { name: 'Bitcoin', amount: 1 }] })
           .then(res => {
             expect(res.body).toEqual({
               __v: 0,
               _id: expect.any(String),
               user: expect.any(String),
               watchList: [],
-              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 10000 }, { _id: expect.any(String), name: 'Bitcoin', amount: 1 }]
+              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 100000 }, { _id: expect.any(String), name: 'Bitcoin', amount: 1 }]
             });
           });
       });
