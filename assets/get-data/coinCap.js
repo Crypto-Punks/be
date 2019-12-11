@@ -1,4 +1,4 @@
-const json = require('./coinCap.json');
+const json = require('./coinCap.json.js');
 
 
 const coinCapData = json.data.map(data => {

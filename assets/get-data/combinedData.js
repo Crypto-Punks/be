@@ -1,6 +1,6 @@
 const marketCapData = require('./coinCapMarket');
 const coinCapData = require('./coinCap');
-const fs = require('fs');
+const fs = require('./node_modules/fs');
 
 const combinedData = marketCapData.map(mcData => {
   const ccData = coinCapData.find(element => mcData.symbol === element.symbol);
