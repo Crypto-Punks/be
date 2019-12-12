@@ -68,7 +68,7 @@ describe('portfolio routes', () => {
       .send({ username: 'test1', password: 'abc1' })
       .then(() => {
         return agent
-          .post('/api/v1/portfolio')
+          .post('/api/v1/portfolio');
       })
       .then(() => {
         return agent
@@ -85,4 +85,6 @@ describe('portfolio routes', () => {
           });
       });
   });
+
+
 });
