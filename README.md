@@ -8,6 +8,7 @@
 * [submission PR](http://xyz.com)
 * [back-end](https://crypto-trades-2020.herokuapp.com/)
 * [front-end](https://sleepy-brahmagupta-07740c.netlify.com)
+* [cron](cron-job.org)
 
 #### Running the app
 
