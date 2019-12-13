@@ -1,0 +1,7 @@
+language: node_js
+services:
+  - mongodb
+env: MONGODB_URI=mongodb://localhost:27017/travis APP_SECRET=CHANGEMENOW
+node_js:
+  - "stable"
+
