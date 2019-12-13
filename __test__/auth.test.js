@@ -49,10 +49,10 @@ describe('auth routes', () => {
       });
   });
 
-  it('can singin a user', async() => {
+  it('can signin a user', async() => {
     await User.create({ username: 'test', password: 'abc' });
     const res = await request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/auth/login')
       .send({ username: 'test', password: 'abc' });
 
     expect(res.body).toEqual({
@@ -64,7 +64,7 @@ describe('auth routes', () => {
   it('errors signin a user when a bad password is provided', async() => {
     await User.create({ username: 'test', password: 'abc' });
     const res = await request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/auth/login')
       .send({ username: 'test', password: '123' });
 
     expect(res.status).toEqual(401);
@@ -77,7 +77,7 @@ describe('auth routes', () => {
   it('errors signin a user when a bad username is provided', async() => {
     await User.create({ username: 'test', password: 'abc' });
     const res = await request(app)
-      .post('/api/v1/auth/signin')
+      .post('/api/v1/auth/login')
       .send({ username: 'dog', password: 'abc' });
 
     expect(res.status).toEqual(401);

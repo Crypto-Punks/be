@@ -31,20 +31,7 @@ describe('total routes', () => {
           })
           .then(res => {
             expect(res.body).toEqual({
-              totals: [
-                {
-                  name: 'USD',
-                  amount: 5000
-                },
-                {
-                  name: 'Bitcoin',
-                  amount: 1
-                }
-              ],
-              user: expect.any(String),
-              __v: 0,
-              timestamp: expect.any(String),
-              _id: expect.any(String)
+              success: true
             });
           });
       });
@@ -58,9 +45,6 @@ describe('total routes', () => {
       .then(() => {
         return agent
           .post('/api/v1/total')
-          .send({
-            totals: [{ name: 'USD', amount: 5000 }, { name: 'Bitcoin', amount: 1 }]
-          })
           .then(() => {
             return agent
               .get('/api/v1/total')
@@ -69,17 +53,16 @@ describe('total routes', () => {
                   totals: [
                     {
                       name: 'USD',
-                      amount: 5000
-                    },
-                    {
-                      name: 'Bitcoin',
-                      amount: 1
+                      amount: 100000,
+                      priceUsd: 1,
+                      value: 100000
                     }
                   ],
                   user: expect.any(String),
                   __v: 0,
                   timestamp: expect.any(String),
-                  _id: expect.any(String)
+                  _id: expect.any(String),
+                  portfolioId: expect.any(String)
                 }]);
               });
           });

@@ -22,4 +22,6 @@ const combinedData = marketCapData.map(mcData => {
 
 fs.writeFileSync('json-data.json', JSON.stringify(combinedData, true, 2));
 
-//cli command: mongoimport -d crypto-punk -c references --jsonArray --file json-data.json
+//cli command: mongoimport -d crypto-punk -c references --jsonArray --file assets/json-data.json
+//cli command: mongoimport -d heroku_201h70pv -c references -h ds253398.mlab.com -p 6jfpp0n7gugt1lrqnrbsoko1mm --port 53398 -u heroku_201h70pv --jsonArray --file assets/json-data.json
+

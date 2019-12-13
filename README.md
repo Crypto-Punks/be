@@ -6,20 +6,8 @@
 
 ### Links and Resources
 * [submission PR](http://xyz.com)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
-
-#### Documentation
-* [api docs](https://docs.coincap.io/?version=latest)
-* [styleguide](http://xyz.com) (React assignments)
-
-### Setup
-#### `.env` requirements
-* `PORT` - Port Number
-* `MONGODB_URI` - URL to the running mongo instance/db
-
-**or, include an `.env.example`**
+* [back-end](https://crypto-trades-2020.herokuapp.com/)
+* [front-end](https://sleepy-brahmagupta-07740c.netlify.com)
 
 #### Running the app
 
@@ -53,9 +41,6 @@ available via `npm run-script`:
 
  * start:watch
     nodemon server.js
-  
-#### Tests
-Any additional testing information
 
 #### UML
 [wireframes](assets/crypto-trades-wireframes.jpg)
