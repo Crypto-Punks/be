@@ -29,8 +29,8 @@ describe('trade routes', () => {
           .send({
             user: user._id,
             exchange_rate: 1000,
-            from_currency: 'USD',
-            to_currency: 'bitcoin'
+            from_currency: { name: 'USD', amount: 100 },
+            to_currency: { name: 'bitcoin', amount: 100 }
           })
           .then(res => {
             expect(res.body).toEqual({
@@ -39,8 +39,8 @@ describe('trade routes', () => {
               user: expect.any(String),
               timestamp: expect.any(String),
               exchange_rate: 1000,
-              from_currency: 'USD',
-              to_currency: 'bitcoin'
+              from_currency: { name: 'USD', amount: 100 },
+              to_currency: { name: 'bitcoin', amount: 100 }
             });
           });
       });
@@ -57,8 +57,8 @@ describe('trade routes', () => {
           .send({
             user: user._id,
             exchange_rate: 1000,
-            from_currency: 'USD',
-            to_currency: 'bitcoin'
+            from_currency: { name: 'USD', amount: 100 },
+            to_currency: { name: 'bitcoin', amount: 100 }
           })
           .then(() => {
             return agent
@@ -70,8 +70,8 @@ describe('trade routes', () => {
                   user: expect.any(String),
                   timestamp: expect.any(String),
                   exchange_rate: 1000,
-                  from_currency: 'USD',
-                  to_currency: 'bitcoin'
+                  from_currency: { name: 'USD', amount: 100 },
+                  to_currency: { name: 'bitcoin', amount: 100 }
                 }]);
               });
           });

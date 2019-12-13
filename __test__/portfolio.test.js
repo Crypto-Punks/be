@@ -18,26 +18,6 @@ describe('portfolio routes', () => {
     return mongoose.connection.close();
   });
 
-  it('can post a portfolio', () => {
-    const agent = request.agent(app);
-    return agent
-      .post('/api/v1/auth/signup')
-      .send({ username: 'test1', password: 'abc1' })
-      .then(() => {
-        return agent
-          .post('/api/v1/portfolio')
-          .then(res => {
-            expect(res.body).toEqual({
-              __v: 0,
-              _id: expect.any(String),
-              user: expect.any(String),
-              watchList: [],
-              investedCoins: [{ _id: expect.any(String), name: 'USD', amount: 100000 }]
-            });
-          });
-      });
-  });
-
   it('can get a portfolio', () => {
     const agent = request.agent(app);
     return agent
