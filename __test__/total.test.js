@@ -23,12 +23,10 @@ describe('total routes', () => {
     return agent
       .post('/api/v1/auth/signup')
       .send({ username: 'test1', password: 'abc1' })
-      .then(() => {
+      .then(res => {
+        console.log(res.body._id);
         return agent
-          .post('/api/v1/total')
-          .send({
-            totals: [{ name: 'USD', amount: 5000 }, { name: 'Bitcoin', amount: 1 }]
-          })
+          .post(`/api/v1/total/${res.body._id}`)
           .then(res => {
             expect(res.body).toEqual({
               success: true
@@ -42,13 +40,15 @@ describe('total routes', () => {
     return agent
       .post('/api/v1/auth/signup')
       .send({ username: 'test1', password: 'abc1' })
-      .then(() => {
+      .then(res => {
+        console.log(res.body._id);
         return agent
-          .post('/api/v1/total')
+          .post(`/api/v1/total/${res.body._id}`)
           .then(() => {
             return agent
               .get('/api/v1/total')
               .then(res => {
+                console.log(res.body);
                 expect(res.body).toEqual([{
                   totals: [
                     {
